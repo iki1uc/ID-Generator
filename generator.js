@@ -1,0 +1,33 @@
+// 4× stärkerer Respo‑Name‑Generator
+
+const base = [
+    "Respo-Rotation",
+    "Scan-Ghost",
+    "BOERSE",
+    "ID-Gate",
+    "ki3KIme",
+    "ECO-MARKT3-EXP168",
+    "SCAN81",
+    "MARKT",
+    "TP4",
+    "TP8",
+    "TP12"
+];
+
+// Extra-Silben für Markov-ähnliche Mischung
+const syllables = [
+    "Re", "Spo", "Ro", "Ta", "Whirl", "Boost", "Ghost",
+    "Ki", "Me", "Gate", "Scan", "Eco", "Exp", "Mark",
+    "TP", "Sys", "Rot", "Flow", "Spin", "Loop"
+];
+
+// 4× Power: Mischung aus Basis + Silben + Random
+function generateRespoName() {
+    const pick = base[Math.floor(Math.random() * base.length)];
+    const syl1 = syllables[Math.floor(Math.random() * syllables.length)];
+    const syl2 = syllables[Math.floor(Math.random() * syllables.length)];
+    const slice = pick.slice(0, Math.floor(Math.random() * pick.length));
+    const random = Math.random().toString(36).substring(2, 6).toUpperCase();
+
+    return `${syl1}${syl2}-${slice}-${random}`;
+}
