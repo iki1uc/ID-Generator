@@ -1,3 +1,4 @@
+// Basis-DNA
 const base = [
     "Respo-Rotation",
     "Scan-Ghost",
@@ -12,9 +13,27 @@ const base = [
     "TP12"
 ];
 
+// Markov-ähnliche Silben
+const syllables = [
+    "Re", "Spo", "Ro", "Ta", "Whirl", "Boost", "Ghost",
+    "Ki", "Me", "Gate", "Scan", "Eco", "Exp", "Mark",
+    "TP", "Sys", "Rot", "Flow", "Spin", "Loop"
+];
+
+// Name + ID kombiniert
 function generateRespoName() {
     const pick = base[Math.floor(Math.random() * base.length)];
+    const syl1 = syllables[Math.floor(Math.random() * syllables.length)];
+    const syl2 = syllables[Math.floor(Math.random() * syllables.length)];
     const slice = pick.slice(0, Math.floor(Math.random() * pick.length));
     const random = Math.random().toString(36).substring(2, 6).toUpperCase();
-    return slice + "-" + random;
+
+    // Name erzeugen
+    const name = `${syl1}${syl2}-${slice}`;
+
+    // ID erzeugen
+    const id = `ID-${random}`;
+
+    // Kombiniert zurückgeben
+    return `${name}::${id}`;
 }
