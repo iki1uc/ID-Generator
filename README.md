@@ -59,3 +59,22 @@ Der ID‑Generator dient dazu:
 - neue Ghost‑Scan‑Projekte zu erstellen  
 
 Er ist ein **Name‑Engine** für dein gesamtes System.
+## 🔹 Respo‑ID‑Generator
+
+Der Generator erzeugt **Name + ID** gleichzeitig:
+
+- Name basiert auf:
+  - Respo‑Rotation
+  - Ghost‑Scan
+  - BOERSE
+  - TP‑System
+  - ECO‑EXP
+  - Scan81
+
+- ID basiert auf:
+  - zufälligem 4‑Zeichen‑Code
+  - eindeutiger Projekt‑Signatur
+
+Beispiel:
+
+
