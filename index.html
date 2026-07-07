@@ -20,20 +20,22 @@ const syllables = [
     "TP", "Sys", "Rot", "Flow", "Spin", "Loop"
 ];
 
-// Name + ID kombiniert
+// Fehlerfreie Version
 function generateRespoName() {
     const pick = base[Math.floor(Math.random() * base.length)];
+
+    // Silben
     const syl1 = syllables[Math.floor(Math.random() * syllables.length)];
     const syl2 = syllables[Math.floor(Math.random() * syllables.length)];
-    const slice = pick.slice(0, Math.floor(Math.random() * pick.length));
+
+    // Slice darf NIE leer sein → Mindestlänge 3
+    const minLen = 3;
+    const maxLen = pick.length;
+    const sliceLen = Math.floor(Math.random() * (maxLen - minLen)) + minLen;
+    const slice = pick.slice(0, sliceLen);
+
+    // ID
     const random = Math.random().toString(36).substring(2, 6).toUpperCase();
 
-    // Name erzeugen
-    const name = `${syl1}${syl2}-${slice}`;
-
-    // ID erzeugen
-    const id = `ID-${random}`;
-
-    // Kombiniert zurückgeben
-    return `${name}::${id}`;
+    return `${syl1}${syl2}-${slice}::ID-${random}`;
 }
