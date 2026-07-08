@@ -1,41 +1,60 @@
-// Basis-DNA
-const base = [
-    "Respo-Rotation",
-    "Scan-Ghost",
-    "BOERSE",
-    "ID-Gate",
-    "ki3KIme",
-    "ECO-MARKT3-EXP168",
-    "SCAN81",
-    "MARKT",
-    "TP4",
-    "TP8",
-    "TP12"
-];
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>ID‑Generator</title>
+    <style>
+        body {
+            font-family: monospace;
+            background: #111;
+            color: #0f0;
+            padding: 40px;
+        }
+        input {
+            width: 420px;
+            padding: 10px;
+            font-size: 18px;
+            background: #000;
+            color: #0f0;
+            border: 1px solid #0f0;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 18px;
+            margin-top: 10px;
+            background: #0f0;
+            color: #000;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #5f5;
+        }
+    </style>
+</head>
 
-// Markov-ähnliche Silben
-const syllables = [
-    "Re", "Spo", "Ro", "Ta", "Whirl", "Boost", "Ghost",
-    "Ki", "Me", "Gate", "Scan", "Eco", "Exp", "Mark",
-    "TP", "Sys", "Rot", "Flow", "Spin", "Loop"
-];
+<body>
 
-// Fehlerfreie Version
-function generateRespoName() {
-    const pick = base[Math.floor(Math.random() * base.length)];
+    <h1>ID‑Generator</h1>
 
-    // Silben
-    const syl1 = syllables[Math.floor(Math.random() * syllables.length)];
-    const syl2 = syllables[Math.floor(Math.random() * syllables.length)];
+    <!-- Output-Feld -->
+    <input id="output" type="text" placeholder="RESPO‑ID erscheint hier…" readonly>
 
-    // Slice darf NIE leer sein → Mindestlänge 3
-    const minLen = 3;
-    const maxLen = pick.length;
-    const sliceLen = Math.floor(Math.random() * (maxLen - minLen)) + minLen;
-    const slice = pick.slice(0, sliceLen);
+    <br><br>
 
-    // ID
-    const random = Math.random().toString(36).substring(2, 6).toUpperCase();
+    <!-- Button -->
+    <button id="generateBtn">Generate RESPO‑Name</button>
 
-    return `${syl1}${syl2}-${slice}::ID-${random}`;
-}
+    <!-- Generator laden -->
+    <script src="generator.js"></script>
+
+    <!-- Connector -->
+    <script>
+        document.getElementById("generateBtn").addEventListener("click", () => {
+            const id = generateRespoName();
+            document.getElementById("output").value = id;
+        });
+    </script>
+
+</body>
+</html>
